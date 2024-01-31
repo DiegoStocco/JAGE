@@ -11,8 +11,7 @@ CC := clang++
 COMPILER_FLAGS := -O2 -g -Wall $(addprefix -I, $(INCLUDE_DIR) ) 
 
 # LINKER_FLAGS specifies the libraries we're linking against
-# TODO: GLFW should be in the lib/ directory
-LINKER_FLAGS := -lGL -lglfw -lGLEW
+#LINKER_FLAGS := -lGL -lglfw -lGLEW
 
 # OBJ_NAME specifies the name of our exectuable
 RESULT := jage.a
@@ -24,7 +23,7 @@ $(RESULT) : $(OBJS) $(BUILD_DIR_NAME)
 	ar rcs $(RESULT) $(OBJS)
 
 %.o: %.cpp
-	$(CC) $(COMPILER_FLAGS) $(LINKER_FLAGS) -c -o $@ $<
+	$(CC) $(COMPILER_FLAGS) -c -o $@ $<
 
 .PHONY: clean
 clean:
