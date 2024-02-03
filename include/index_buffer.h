@@ -1,17 +1,21 @@
 #pragma once
 
-class IndexBuffer
-{
-  public:
-    IndexBuffer(const unsigned int* data, unsigned int count);
-    ~IndexBuffer();
+namespace JAGE {
 
-    void Bind() const;
-    void UnBind() const;
-    
-    unsigned int GetCount() const;
+  class IndexBuffer
+  {
+    public:
+      IndexBuffer(const unsigned int* data, unsigned int count);
+      ~IndexBuffer();
 
-  private:
-    unsigned int m_ID;
-    unsigned int m_count;
-};
+      void Bind() const;
+      void UnBind() const;
+      
+      unsigned int GetCount() const;
+
+    private:
+      unsigned int m_ID;
+      unsigned int m_count;
+  };
+
+}
