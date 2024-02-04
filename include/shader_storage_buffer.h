@@ -13,7 +13,8 @@ namespace JAGE
 
       unsigned int GetSize() const;
 
-      void SetData(const void* data, unsigned int size, GLenum usage = GL_STATIC_DRAW);
+      void SetData(const void* data, unsigned int size, unsigned int offset = 0);
+      void* GetData();
 
     private:
       unsigned int m_ID;

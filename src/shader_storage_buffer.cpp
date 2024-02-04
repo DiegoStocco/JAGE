@@ -1,4 +1,6 @@
 #include "shader_storage_buffer.h"
+#include <cstring>
+#include <iostream>
 #include <GL/glew.h>
 
 namespace JAGE {
@@ -32,11 +34,23 @@ namespace JAGE {
     return m_size;
   }
 
-  void ShaderStorageBuffer::SetData(const void* data, unsigned int size, GLenum usage /* = GL_STATIC_DRAW*/ )
+  void ShaderStorageBuffer::SetData(const void* data, unsigned int size, unsigned int offset /* = 0 */)
   {
-    m_size = size;
+    if(size + offset > m_size)
+      std::cerr << "Tried to write too much data on SSBO\n";
     Bind();
-    glBufferData(GL_SHADER_STORAGE_BUFFER, size, data, usage);
-    UnBind();
+    void* buffer = glMapBuffer(GL_SHADER_STORAGE_BUFFER, GL_WRITE_ONLY);
+    memcpy((char*)buffer + offset, data, size);
+    glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);
+  }
+
+  void* ShaderStorageBuffer::GetData()
+  {
+    void* res = malloc(m_size);
+    Bind();
+    void* buffer = glMapBuffer(GL_SHADER_STORAGE_BUFFER, GL_READ_ONLY);
+    memcpy(res, buffer, m_size);
+    glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);
+    return res;
   }
 }
