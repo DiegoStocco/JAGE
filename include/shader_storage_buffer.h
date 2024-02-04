@@ -9,6 +9,7 @@ namespace JAGE
       ~ShaderStorageBuffer();
 
       void Bind() const;
+      void Bind(unsigned int index) const;
       void UnBind() const;
 
       unsigned int GetSize() const;
