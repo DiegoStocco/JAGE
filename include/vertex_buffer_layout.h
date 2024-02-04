@@ -2,7 +2,8 @@
 
 #include <stdexcept>
 #include <vector>
-#include "GL/glew.h"
+#define GLFW_INCLUDE_NONE
+#include <GL/glew.h>
 
 namespace JAGE {
   struct VertexBufferElement {
