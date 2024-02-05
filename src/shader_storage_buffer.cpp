@@ -21,7 +21,7 @@ namespace JAGE {
 
   void ShaderStorageBuffer::Bind() const
   {
-    glBindBuffer(GL_ARRAY_BUFFER, m_ID);
+    glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_ID);
   }
 
   void ShaderStorageBuffer::Bind(unsigned int index) const
@@ -31,7 +31,7 @@ namespace JAGE {
 
   void ShaderStorageBuffer::UnBind() const
   {
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindBuffer(GL_SHADER_STORAGE_BUFFER, 0);
   }
 
   unsigned int ShaderStorageBuffer::GetSize() const
