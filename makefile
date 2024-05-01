@@ -5,7 +5,7 @@ SOURCES := $(wildcard $(SOURCES_DIR)/*.cpp)
 OBJS := $(patsubst %.cpp, %.o, $(wildcard $(SOURCES_DIR)/*.cpp))
 
 # CC specifies which compiler we're using
-CC := clang++
+CC := g++
 
 # COMPILER_FLAGS specifies the additional compilation options we're using
 COMPILER_FLAGS := -O2 -g -Wall $(addprefix -I, $(INCLUDE_DIR) ) 
